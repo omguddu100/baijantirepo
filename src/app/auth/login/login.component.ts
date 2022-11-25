@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
+import { first } from 'rxjs';
+import { AuthService} from '../services/auth.service'
 
 
 @Component({
@@ -10,24 +12,40 @@ import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   login!:FormGroup 
 
-  constructor( private fb:FormBuilder,
+  constructor( 
+    private fb:FormBuilder,
+    private authApi:AuthService
     ) { }
 
   ngOnInit(): void {
-    this.loginfun()
+    this.loginformInti();
+    this.authApi.getProduct().subscribe(res=>{
+     // console.log(res)
+    })
   }
+
  
-  loginfun(){
+  loginformInti(){
     this.login=this.fb.group({
-      email:[],
-      password:[]
+      email:['manish@mobilejunction.com'],
+      password:['12admin@1234@']
+    })
+  }
+   obj=
+    {
+      "email":"manish@mobilejunction.com",
+      "password":"12admin@1234@"
+    }
+  loginfun(){
+    this.authApi.login(this.login).pipe(first()).subscribe(data=>{
+     console.log('Sucess status',data)
+    },error=>{
+      console.error('error status',error)
     })
 
   }
-  
-  loginfun1(){
-    console.log(this.login.value)
-  }
+ 
+
  
 
 }

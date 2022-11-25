@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService} from '../services/auth.service'
 
 @Component({
   selector: 'app-singup',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authApi:AuthService) { }
 
   ngOnInit(): void {
+    this.authApi.getProduct().subscribe(res=>{
+      console.log(res)
+    })
   }
 
 }
