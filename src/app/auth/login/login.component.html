@@ -1,17 +1,25 @@
-<div class="signin-content">
+
+  <div class="container">
+    <div class="top-content">
+      <img src="https://i.postimg.cc/CL7CmGSx/google-logo-png-29530.png" alt="">
+      <h2>Sign in</h2>
+      <p class="heading">Use your Google Account</p>
   
-    <form class="example-form" [formGroup]="login"  >
-        <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput formControlName="email"  placeholder="Ex. pat@example.com">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput formControlName="password"  placeholder="Enter Password">
-        </mat-form-field>
-        <button (click)="loginfun()" mat-raised-button color="accent">Login</button>
-      </form>
-
- 
+    </div>
+    <form class="example-form" [formGroup]="login">
+    <div class="inputs">
+      <label for="email" class="input-label">Email or phone</label>
+      <input type="email" matInput  id="email" formControlName="email" class="input" >
+    
+    </div>
+    <div class="inputs">
+      <label for="email" class="input-label">Password</label>
+      <input type="password" matInput  id="email"  formControlName="password" class="input" >
+      <!-- <label for="email" class="input-label">Password</label> -->
+  
+    </div>
+    <div class="btn-group">
+      <button class="next-btn"  (click)="loginfun()">Login</button>
+    </div>
+  </form>
   </div>
